@@ -5,8 +5,15 @@ const dogSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  microchipId: {
+    type: String,
+    required: true,
+    unique: true,
+    trim: true,
+  },
   gender: {
     type: String,
+    enum: ["Male", "Female"],
     required: true,
   },
   age: {

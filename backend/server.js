@@ -13,8 +13,10 @@ app.use(express.json());
 
 // Routers
 const authRoutes = require("./routes/authRoutes");
+const dogRoutes = require("./routes/dogRoutes");
 
 app.use("/api/auth", authRoutes);
+app.use("/api", dogRoutes);
 
 // Test route
 app.get("/", (req, res) => {
