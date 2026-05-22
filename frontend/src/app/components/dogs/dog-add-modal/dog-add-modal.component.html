@@ -1,10 +1,10 @@
 <div class="modal-header">
-  <h5 class="modal-title">Edit Dog</h5>
+  <h5 class="modal-title">Add Dog</h5>
   <button type="button" class="btn-close" (click)="onCancel()"></button>
 </div>
 
 <div class="modal-body">
-  <form [formGroup]="editDogForm">
+  <form [formGroup]="addDogForm">
     @if (errorMessage) {
       <div class="alert alert-danger">{{ errorMessage }}</div>
     }
@@ -14,7 +14,7 @@
         <label class="form-label">Name *</label>
         <input type="text" class="form-control" formControlName="name" />
         @if (
-          editDogForm.get("name")?.invalid && editDogForm.get("name")?.touched
+          addDogForm.get("name")?.invalid && addDogForm.get("name")?.touched
         ) {
           <div class="text-danger small">Name is required</div>
         }
@@ -24,8 +24,8 @@
         <label class="form-label">Microchip ID *</label>
         <input type="text" class="form-control" formControlName="microchipId" />
         @if (
-          editDogForm.get("microchipId")?.invalid &&
-          editDogForm.get("microchipId")?.touched
+          addDogForm.get("microchipId")?.invalid &&
+          addDogForm.get("microchipId")?.touched
         ) {
           <div class="text-danger small">Microchip ID is required</div>
         }
@@ -41,8 +41,7 @@
           <option value="Female">Female</option>
         </select>
         @if (
-          editDogForm.get("gender")?.invalid &&
-          editDogForm.get("gender")?.touched
+          addDogForm.get("gender")?.invalid && addDogForm.get("gender")?.touched
         ) {
           <div class="text-danger small">Gender is required</div>
         }
@@ -52,7 +51,7 @@
         <label class="form-label">Breed *</label>
         <input type="text" class="form-control" formControlName="breed" />
         @if (
-          editDogForm.get("breed")?.invalid && editDogForm.get("breed")?.touched
+          addDogForm.get("breed")?.invalid && addDogForm.get("breed")?.touched
         ) {
           <div class="text-danger small">Breed is required</div>
         }
@@ -63,9 +62,7 @@
       <div class="col-md-6 mb-3">
         <label class="form-label">Age *</label>
         <input type="number" class="form-control" formControlName="age" />
-        @if (
-          editDogForm.get("age")?.invalid && editDogForm.get("age")?.touched
-        ) {
+        @if (addDogForm.get("age")?.invalid && addDogForm.get("age")?.touched) {
           <div class="text-danger small">Age must be 0 or greater</div>
         }
       </div>
@@ -74,8 +71,7 @@
         <label class="form-label">Weight *</label>
         <input type="number" class="form-control" formControlName="weight" />
         @if (
-          editDogForm.get("weight")?.invalid &&
-          editDogForm.get("weight")?.touched
+          addDogForm.get("weight")?.invalid && addDogForm.get("weight")?.touched
         ) {
           <div class="text-danger small">Weight must be 0 or greater</div>
         }
@@ -100,8 +96,8 @@
           formControlName="acquisitionCountry"
         />
         @if (
-          editDogForm.get("acquisitionCountry")?.invalid &&
-          editDogForm.get("acquisitionCountry")?.touched
+          addDogForm.get("acquisitionCountry")?.invalid &&
+          addDogForm.get("acquisitionCountry")?.touched
         ) {
           <div class="text-danger small">Acquisition country is required</div>
         }
@@ -159,6 +155,6 @@
     Cancel
   </button>
   <button type="button" class="btn btn-primary" (click)="onSubmit()">
-    Save
+    Add Dog
   </button>
 </div>

@@ -1,1 +1,59 @@
-<p>register works!</p>
+<div class="row justify-content-center">
+  <div class="col-12 col-md-4">
+    <h2 class="text-center">Register</h2>
+    <form (ngSubmit)="onRegisterSubmit()">
+      @if (formError) {
+        <div class="alert alert-danger" role="alert">
+          {{ formError }}
+        </div>
+      }
+
+      <div class="form-group mb-3">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          name="name"
+          placeholder="Enter Name"
+          required
+          [(ngModel)]="credentials.name"
+        />
+      </div>
+      <div class="form-group mb-3">
+        <label for="email">Email Address</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          name="email"
+          placeholder="Enter email address"
+          required
+          [(ngModel)]="credentials.email"
+        />
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          name="password"
+          placeholder="e.g 12+ alphanumerics"
+          required
+          [(ngModel)]="credentials.password"
+        />
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-primary" [disabled]="isLoading">
+          @if (isLoading) {
+            <span class="spinner-border spinner-border-sm me-2"></span>
+          }
+          {{ isLoading ? "Registering..." : "Register" }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

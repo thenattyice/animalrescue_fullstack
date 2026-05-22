@@ -1,1 +1,18 @@
-<p>dog-list works!</p>
+<div class="container-fluid mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Dogs</h2>
+    <button class="btn btn-success" (click)="openAddModal()">Add Dog</button>
+  </div>
+
+  <ag-grid-angular
+    style="width: 100%; height: 550px"
+    [rowData]="rowData"
+    [columnDefs]="colDefs"
+    [defaultColDef]="defaultColDef"
+    [pagination]="pagination"
+    [paginationPageSize]="paginationPageSize"
+    [context]="{ componentParent: this }"
+    (gridReady)="onGridReady($event)"
+  >
+  </ag-grid-angular>
+</div>
