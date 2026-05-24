@@ -1,0 +1,194 @@
+<div class="modal-header">
+  <h5 class="modal-title">Add Monkey</h5>
+  <button type="button" class="btn-close" (click)="onCancel()"></button>
+</div>
+
+<div class="modal-body">
+  <form [formGroup]="addMonkeyForm">
+    @if (errorMessage) {
+      <div class="alert alert-danger">{{ errorMessage }}</div>
+    }
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Name *</label>
+        <input type="text" class="form-control" formControlName="name" />
+        @if (
+          addMonkeyForm.get("name")?.invalid &&
+          addMonkeyForm.get("name")?.touched
+        ) {
+          <div class="text-danger small">Name is required</div>
+        }
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Microchip ID *</label>
+        <input type="text" class="form-control" formControlName="microchipId" />
+        @if (
+          addMonkeyForm.get("microchipId")?.invalid &&
+          addMonkeyForm.get("microchipId")?.touched
+        ) {
+          <div class="text-danger small">Microchip ID is required</div>
+        }
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Gender *</label>
+        <select class="form-select" formControlName="gender">
+          <option value="">Select gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+        @if (
+          addMonkeyForm.get("gender")?.invalid &&
+          addMonkeyForm.get("gender")?.touched
+        ) {
+          <div class="text-danger small">Gender is required</div>
+        }
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Species *</label>
+        <input type="text" class="form-control" formControlName="species" />
+        @if (
+          addMonkeyForm.get("Species")?.invalid &&
+          addMonkeyForm.get("species")?.touched
+        ) {
+          <div class="text-danger small">Species is required</div>
+        }
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Age *</label>
+        <input type="number" class="form-control" formControlName="age" />
+        @if (
+          addMonkeyForm.get("age")?.invalid && addMonkeyForm.get("age")?.touched
+        ) {
+          <div class="text-danger small">Age must be 0 or greater</div>
+        }
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Weight *</label>
+        <input type="number" class="form-control" formControlName="weight" />
+        @if (
+          addMonkeyForm.get("weight")?.invalid &&
+          addMonkeyForm.get("weight")?.touched
+        ) {
+          <div class="text-danger small">Weight must be 0 or greater</div>
+        }
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Tail Length *</label>
+        <input
+          type="number"
+          class="form-control"
+          formControlName="tailLength"
+        />
+        @if (
+          addMonkeyForm.get("tailLength")?.invalid &&
+          addMonkeyForm.get("tailLength")?.touched
+        ) {
+          <div class="text-danger small">Tail Length must be 0 or greater</div>
+        }
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Height *</label>
+        <input type="number" class="form-control" formControlName="height" />
+        @if (
+          addMonkeyForm.get("height")?.invalid &&
+          addMonkeyForm.get("height")?.touched
+        ) {
+          <div class="text-danger small">Height must be 0 or greater</div>
+        }
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Acquisition Date</label>
+        <input
+          type="date"
+          class="form-control"
+          formControlName="acquisitionDate"
+        />
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Acquisition Country *</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="acquisitionCountry"
+        />
+        @if (
+          addMonkeyForm.get("acquisitionCountry")?.invalid &&
+          addMonkeyForm.get("acquisitionCountry")?.touched
+        ) {
+          <div class="text-danger small">Acquisition country is required</div>
+        }
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Training Status</label>
+        <select class="form-select" formControlName="trainingStatus">
+          <option value="Not Started">Not Started</option>
+          <option value="In Progress">In Progress</option>
+          <option value="Completed">Completed</option>
+        </select>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label class="form-label">In Service Country</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="inServiceCountry"
+        />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <div class="form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            formControlName="reserved"
+          />
+          <label class="form-check-label">Reserved</label>
+        </div>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <div class="form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            formControlName="inService"
+          />
+          <label class="form-check-label">In Service</label>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="onCancel()">
+    Cancel
+  </button>
+  <button type="button" class="btn btn-primary" (click)="onSubmit()">
+    Add Monkey
+  </button>
+</div>

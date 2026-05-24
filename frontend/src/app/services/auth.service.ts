@@ -4,13 +4,14 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 import { User } from '../models/user';
 import { AuthResponse } from '../models/auth-response';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private tokenKey = 'animalrescue-token';
-  private apiUrl = 'http://localhost:3000/api';
+  private apiUrl = environment.apiUrl;
   // Setup our storage and service access
   constructor(
     private http: HttpClient,

@@ -3,6 +3,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { DogListComponent } from './components/dogs/dog-list/dog-list.component';
+import { MonkeyListComponent } from './components/monkeys/monkey-list/monkey-list.component';
 import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
@@ -10,5 +11,6 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'dogs', component: DogListComponent, canActivate: [authGuard] },
+  { path: 'monkeys', component: MonkeyListComponent, canActivate: [authGuard] },
   { path: '**', redirectTo: '' }, // Wildcard - redirects unknown routes to home
 ];

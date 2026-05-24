@@ -14,9 +14,11 @@ app.use(express.json());
 // Routers
 const authRoutes = require("./routes/authRoutes");
 const dogRoutes = require("./routes/dogRoutes");
+const monkeyRoutes = require("./routes/monkeyRoutes");
 
 app.use("/api/auth", authRoutes);
 app.use("/api", dogRoutes);
+app.use("/api", monkeyRoutes);
 
 // Test route
 app.get("/", (req, res) => {
