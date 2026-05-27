@@ -1,13 +1,19 @@
 const express = require("express");
 const cors = require("cors");
+const helmet = require("helmet");
+const mongoSanitize = require("express-mongo-sanitize");
+const rateLimit = require("express-rate-limit");
 require("dotenv").config();
 
-// MongoDB connection function
 const connectDB = require("./config/db");
+const authRoutes = require("./routes/authRoutes");
+const dogRoutes = require("./routes/dogRoutes");
+const monkeyRoutes = require("./routes/monkeyRoutes");
 
 const app = express();
 
 // Middleware
+app.use(helmet());
 app.use(
   cors({
     origin:
@@ -17,12 +23,16 @@ app.use(
   }),
 );
 app.use(express.json());
+app.use(mongoSanitize());
+
+const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 10, // 10 attempts per window
+});
+
+app.use("/api/auth", authLimiter);
 
 // Routers
-const authRoutes = require("./routes/authRoutes");
-const dogRoutes = require("./routes/dogRoutes");
-const monkeyRoutes = require("./routes/monkeyRoutes");
-
 app.use("/api/auth", authRoutes);
 app.use("/api", dogRoutes);
 app.use("/api", monkeyRoutes);
